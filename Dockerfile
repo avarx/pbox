@@ -67,8 +67,6 @@ RUN apt-get update && \
     libpcap-dev \
     # theharvester
     python3.7 \
-    # joomscan
-    libwww-perl \
     # hydra
     hydra \
     # dnsrecon
