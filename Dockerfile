@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Working Directory
 WORKDIR /root
-RUN mkdir ${HOME}/toolkit && \
+RUN mkdir ${HOME}/tools && \
     mkdir ${HOME}/wordlists
 
 # Install Essentials
@@ -87,11 +87,11 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zurich /etc/localtime && \
 RUN python -m pip install --upgrade setuptools && python3 -m pip install --upgrade setuptools && python3.7 -m pip install --upgrade setuptools
 
 # dnsenum
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/fwaeytens/dnsenum.git && \
     cd dnsenum/ && \
     chmod +x dnsenum.pl && \
-    ln -s ${HOME}/toolkit/dnsenum/dnsenum.pl /usr/bin/dnsenum && \
+    ln -s ${HOME}/tools/dnsenum/dnsenum.pl /usr/bin/dnsenum && \
     cpanm String::Random && \
     cpanm Net::IP && \
     cpanm Net::DNS && \
@@ -99,11 +99,11 @@ RUN cd ${HOME}/toolkit && \
     cpanm XML::Writer
 
 # Sublist3r
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/aboul3la/Sublist3r.git && \
     cd Sublist3r/ && \
     pip install -r requirements.txt && \
-    ln -s ${HOME}/toolkit/Sublist3r/sublist3r.py /usr/local/bin/sublist3r
+    ln -s ${HOME}/tools/Sublist3r/sublist3r.py /usr/local/bin/sublist3r
 
 # wfuzz
 RUN pip install wfuzz
@@ -113,49 +113,49 @@ RUN cd ${HOME}/wordlists && \
     git clone --depth 1 https://github.com/danielmiessler/SecLists.git
 
 # knock
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/guelfoweb/knock.git && \
     cd knock && \
     chmod +x setup.py && \
     python setup.py install
 
 # massdns
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/blechschmidt/massdns.git && \
     cd massdns/ && \
     make && \
-    ln -sf ${HOME}/toolkit/massdns/bin/massdns /usr/local/bin/massdns
+    ln -sf ${HOME}/tools/massdns/bin/massdns /usr/local/bin/massdns
 
 # wafw00f
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/enablesecurity/wafw00f.git && \
     cd wafw00f && \
     chmod +x setup.py && \
     python setup.py install
 
 # wpscan
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/wpscanteam/wpscan.git && \
     cd wpscan/ && \
     gem install bundler && bundle install --without test && \
     gem install wpscan
 
 # commix
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/commixproject/commix.git && \
     cd commix && \
     chmod +x commix.py && \
-    ln -sf ${HOME}/toolkit/commix/commix.py /usr/local/bin/commix
+    ln -sf ${HOME}/tools/commix/commix.py /usr/local/bin/commix
 
 # masscan
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/robertdavidgraham/masscan.git && \
     cd masscan && \
     make && \
-    ln -sf ${HOME}/toolkit/masscan/bin/masscan /usr/local/bin/masscan
+    ln -sf ${HOME}/tools/masscan/bin/masscan /usr/local/bin/masscan
 
 # altdns
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/infosec-au/altdns.git && \
     cd altdns && \
     pip install -r requirements.txt && \
@@ -163,43 +163,43 @@ RUN cd ${HOME}/toolkit && \
     python setup.py install
 
 # teh_s3_bucketeers
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/tomdev/teh_s3_bucketeers.git && \
     cd teh_s3_bucketeers && \
     chmod +x bucketeer.sh && \
-    ln -sf ${HOME}/toolkit/teh_s3_bucketeers/bucketeer.sh /usr/local/bin/bucketeer
+    ln -sf ${HOME}/tools/teh_s3_bucketeers/bucketeer.sh /usr/local/bin/bucketeer
 
 # Recon-ng
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/lanmaster53/recon-ng.git && \
     cd recon-ng && \
     pip3 install -r REQUIREMENTS && \
     chmod +x recon-ng && \
-    ln -sf ${HOME}/toolkit/recon-ng/recon-ng /usr/local/bin/recon-ng
+    ln -sf ${HOME}/tools/recon-ng/recon-ng /usr/local/bin/recon-ng
 
 # XSStrike
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/s0md3v/XSStrike.git && \
     cd XSStrike && \
     pip3 install -r requirements.txt && \
     chmod +x xsstrike.py && \
-    ln -sf ${HOME}/toolkit/XSStrike/xsstrike.py /usr/local/bin/xsstrike
+    ln -sf ${HOME}/tools/XSStrike/xsstrike.py /usr/local/bin/xsstrike
 
 # theHarvester
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/AlexisAhmed/theHarvester.git && \
     cd theHarvester && \
     python3.7 -m pip install -r requirements.txt && \
     chmod +x theHarvester.py && \
-    ln -sf ${HOME}/toolkit/theHarvester/theHarvester.py /usr/local/bin/theharvester
+    ln -sf ${HOME}/tools/theHarvester/theHarvester.py /usr/local/bin/theharvester
 
 # CloudFlair
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/christophetd/CloudFlair.git && \
     cd CloudFlair && \
     pip install -r requirements.txt && \
     chmod +x cloudflair.py && \
-    ln -sf ${HOME}/toolkit/CloudFlair/cloudflair.py /usr/local/bin/cloudflair
+    ln -sf ${HOME}/tools/CloudFlair/cloudflair.py /usr/local/bin/cloudflair
 
 # go
 RUN cd /opt && \
@@ -212,31 +212,31 @@ ENV GOPATH /root/go
 ENV PATH ${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
 # gobuster
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/OJ/gobuster.git && \
     cd gobuster && \
     go get && go install
 
 # virtual-host-discovery
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/AlexisAhmed/virtual-host-discovery.git && \
     cd virtual-host-discovery && \
     chmod +x scan.rb && \
-    ln -sf ${HOME}/toolkit/virtual-host-discovery/scan.rb /usr/local/bin/virtual-host-discovery
+    ln -sf ${HOME}/tools/virtual-host-discovery/scan.rb /usr/local/bin/virtual-host-discovery
 
 # bucket_finder
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/AlexisAhmed/bucket_finder.git && \
     cd bucket_finder && \
     chmod +x bucket_finder.rb && \
-    ln -sf ${HOME}/toolkit/bucket_finder/bucket_finder.rb /usr/local/bin/bucket_finder
+    ln -sf ${HOME}/tools/bucket_finder/bucket_finder.rb /usr/local/bin/bucket_finder
 
 # dirsearch
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/AlexisAhmed/dirsearch.git && \
     cd dirsearch && \
     chmod +x dirsearch.py && \
-    ln -sf ${HOME}/toolkit/dirsearch/dirsearch.py /usr/local/bin/dirsearch
+    ln -sf ${HOME}/tools/dirsearch/dirsearch.py /usr/local/bin/dirsearch
 
 # s3recon
 RUN pip3 install --upgrade setuptools && \
@@ -253,7 +253,7 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh &&\
     echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 
 # dotdotpwn
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     cpanm Net::FTP && \
     cpanm Time::HiRes && \
     cpanm HTTP::Lite && \
@@ -265,14 +265,14 @@ RUN cd ${HOME}/toolkit && \
     git clone https://github.com/AlexisAhmed/dotdotpwn.git && \
     cd dotdotpwn && \
     chmod +x dotdotpwn.pl && \
-    ln -sf ${HOME}/toolkit/dotdotpwn/dotdotpwn.pl /usr/local/bin/dotdotpwn
+    ln -sf ${HOME}/tools/dotdotpwn/dotdotpwn.pl /usr/local/bin/dotdotpwn
 
 # whatweb
-RUN cd ${HOME}/toolkit && \
+RUN cd ${HOME}/tools && \
     git clone https://github.com/urbanadventurer/WhatWeb.git && \
     cd WhatWeb && \
     chmod +x whatweb && \
-    ln -sf ${HOME}/toolkit/WhatWeb/whatweb /usr/local/bin/whatweb
+    ln -sf ${HOME}/tools/WhatWeb/whatweb /usr/local/bin/whatweb
 
 # fierce
 RUN python3 -m pip install fierce
